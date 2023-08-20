@@ -1,4 +1,13 @@
 spring:
+  #quartz config
+#  quartz:
+#    job-details:
+#      myJob:
+#        durability: true
+#        job-class: com.victor.alertAssign.job.AlertAssignJob
+#      triggers:
+#        myTrigger:
+#          cron: 0 0 7 ? * MON
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
