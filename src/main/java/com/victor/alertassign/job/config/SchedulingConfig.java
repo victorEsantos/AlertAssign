@@ -1,6 +1,5 @@
 package com.victor.alertassign.job.config;
 
-import com.victor.alertassign.job.AlertAssignJob;
 import org.quartz.JobExecutionException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

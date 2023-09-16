@@ -1,4 +1,4 @@
-package com.victor.alertassign.job;
+package com.victor.alertassign.job.config;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
