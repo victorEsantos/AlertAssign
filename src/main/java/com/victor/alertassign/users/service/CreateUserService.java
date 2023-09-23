@@ -16,7 +16,7 @@ public class CreateUserService implements CreateUserUseCase {
 
         @Override
         public UUID handle(CreateUserCommand command) {
-            Users user = new Users(UUID.randomUUID(), command.name(), command.email());
+            Users user = new Users(UUID.randomUUID(), command.name(), command.email(), null);
 
             repository.save(user);
 

@@ -1,6 +1,9 @@
 package com.victor.alertassign.users.domain;
 
-import com.victor.alertassign.users.repository.UsersRepository;
+import java.util.UUID;
 
-public interface UsersDomainRepository extends UsersRepository {
+public interface UsersDomainRepository {
+    Users save(Users user);
+
+    void deleteById(UUID id);
 }
