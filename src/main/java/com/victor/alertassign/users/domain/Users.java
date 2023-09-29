@@ -21,8 +21,8 @@ public class Users {
 
     @Id
     private final UUID id;
-    private final String name;
-    private final String email;
+    private String name;
+    private String email;
 
     @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
     private List<Task> tasks = new ArrayList<>();
