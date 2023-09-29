@@ -1,6 +1,6 @@
 package com.victor.alertassign.task.service;
 
-import com.victor.alertassign.task.domain.CreateTaskUseCase;
+import com.victor.alertassign.task.CreateTaskUseCase;
 import com.victor.alertassign.task.domain.Task;
 import com.victor.alertassign.task.domain.TaskDomainRepository;
 import lombok.RequiredArgsConstructor;

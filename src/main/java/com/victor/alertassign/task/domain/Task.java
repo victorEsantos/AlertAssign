@@ -12,8 +12,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import static org.springframework.util.CollectionUtils.isEmpty;
 
 @Getter
 @Entity
@@ -37,5 +40,15 @@ public class Task {
             name = "task_users",
             joinColumns = @JoinColumn(name = "task_id"),
             inverseJoinColumns = @JoinColumn(name = "users_id"))
-    private List<Users> users;
+    private List<Users> users = new ArrayList<>();
+
+    public void addUser(Users user) {
+        if(isEmpty(this.users)) {
+            this.users = List.of(user);
+        }
+
+        if (!this.users.contains(user)){
+            this.users.add(user);
+        }
+    }
 }

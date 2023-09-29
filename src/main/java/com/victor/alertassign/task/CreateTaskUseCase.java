@@ -1,4 +1,4 @@
-package com.victor.alertassign.task.domain;
+package com.victor.alertassign.task;
 
 import com.victor.alertassign.task.domain.enums.Frequency;
 import lombok.Builder;
