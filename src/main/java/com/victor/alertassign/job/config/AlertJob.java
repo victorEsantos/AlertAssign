@@ -41,10 +41,9 @@ public class AlertJob implements Job {
                 task.setCurrentUserAssignedId(user.getId());
             });
             taskRepository.save(task);
-
-            alertUser(task.getCurrentUserAssignedId());
         }
 
+        alertUser(task.getCurrentUserAssignedId());
 
     }
 
