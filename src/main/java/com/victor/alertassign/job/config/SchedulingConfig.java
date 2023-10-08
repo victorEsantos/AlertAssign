@@ -10,8 +10,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 @EnableScheduling
 public class SchedulingConfig {
     @Bean
-    public AlertAssignJob myScheduledJob() {
-        return new AlertAssignJob();
+    public AlertJob myScheduledJob() {
+//        return new AlertJob();
+        return null;
     }
 
 //    @Scheduled(cron = "0 0 7 ? * MON")

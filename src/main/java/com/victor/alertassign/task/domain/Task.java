@@ -33,7 +33,11 @@ public class Task {
 
     private Frequency alertFrequency;
 
+    private UUID jobFrequencyId;
+
     private Frequency rotationFrequency;
+
+    private UUID jobRotationId;
 
     @ManyToMany
     @JoinTable(
@@ -50,5 +54,9 @@ public class Task {
         if (!this.users.contains(user)){
             this.users.add(user);
         }
+    }
+
+    public void setCurrentUserAssignedId(UUID id) {
+        this.currentUserAssignedId = id;
     }
 }

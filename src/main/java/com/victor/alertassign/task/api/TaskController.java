@@ -4,6 +4,7 @@ import com.victor.alertassign.task.CreateTaskUseCase;
 import com.victor.alertassign.task.CreateTaskUseCase.CreateTaskCommand;
 import com.victor.alertassign.task.InsertUserTaskUseCase;
 import lombok.RequiredArgsConstructor;
+import org.quartz.SchedulerException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +24,7 @@ public class TaskController {
     private final InsertUserTaskUseCase insertUserTaskUseCase;
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody CreateTaskCommand command) {
+    public ResponseEntity<String> create(@RequestBody CreateTaskCommand command) throws SchedulerException {
         UUID id = createTaskUseCase.handle(command);
         var uri = URI.create("/task/" + id);
         return ResponseEntity.created(uri).build();

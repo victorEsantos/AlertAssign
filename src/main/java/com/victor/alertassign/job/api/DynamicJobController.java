@@ -21,7 +21,7 @@ public class DynamicJobController {
 
     @PostMapping("/register")
     public void registerJob(@RequestParam String jobName, @RequestParam String cronExpression) throws SchedulerException {
-        jobService.registerDynamicJob(jobName, cronExpression);
+        jobService.registerAlertJob(jobName, cronExpression, null);
     }
 
     @PostMapping("/cancel")
