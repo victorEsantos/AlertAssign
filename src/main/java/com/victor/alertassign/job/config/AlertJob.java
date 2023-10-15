@@ -5,10 +5,12 @@ import com.victor.alertassign.task.domain.TaskDomainRepository;
 import com.victor.alertassign.users.domain.Users;
 import com.victor.alertassign.users.domain.UsersDomainRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.Date;
@@ -16,8 +18,10 @@ import java.util.UUID;
 
 import static java.util.Objects.isNull;
 
-@RequiredArgsConstructor
+@Slf4j
 @Component
+@Transactional
+@RequiredArgsConstructor
 public class AlertJob implements Job {
 
     private final TaskDomainRepository taskRepository;
@@ -25,7 +29,7 @@ public class AlertJob implements Job {
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
-        System.out.println("Job executado às " + new Date());
+        log.info("Job executado às " + new Date());
 
         if(isNull(context.getJobDetail().getJobDataMap().getString("taskId"))) return;
 
@@ -37,9 +41,15 @@ public class AlertJob implements Job {
 
         if(isNull(currentUser)) {
             //ordenar usuarios por ordem alfabetica do nome
-            task.getUsers().stream().sorted(Comparator.comparing(Users::getName)).findFirst().ifPresent(user -> {
-                task.setCurrentUserAssignedId(user.getId());
-            });
+            task.getUsers().stream().sorted(Comparator.comparing(Users::getName))
+                    .findFirst()
+                    .ifPresent(user -> task.setCurrentUserAssignedId(user.getId()));
+
+            if(isNull(task.getCurrentUserAssignedId())) {
+                log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                log.info("Não há usuários para serem alertados");
+                return;
+            }
             taskRepository.save(task);
         }
 
@@ -50,7 +60,7 @@ public class AlertJob implements Job {
     private void alertUser(UUID currentUserAssignedId) {
         Users user = userRepository.findById(currentUserAssignedId).orElseThrow(() -> new RuntimeException("User not found"));
 
-        System.out.println("Alertando usuário " + user.getName());
-        System.out.println("Enviando email para " + user.getEmail());
+        log.info("Alertando usuário " + user.getName());
+        log.info("Enviando email para " + user.getEmail());
     }
 }

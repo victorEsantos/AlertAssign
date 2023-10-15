@@ -48,7 +48,8 @@ public class Task {
 
     public void addUser(Users user) {
         if(isEmpty(this.users)) {
-            this.users = List.of(user);
+            this.users = new ArrayList<>();
+            this.users.add(user);
         }
 
         if (!this.users.contains(user)){

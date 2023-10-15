@@ -8,6 +8,13 @@ public enum Frequency {
             return "0 * * ? * *";
         }
     },
+    //5 min in 5 min
+    FIVE_MINUTES {
+        @Override
+        public String getCron() {
+            return "0 0/5 * ? * *";
+        }
+    },
     DAILY {
         @Override
         public String getCron() {
