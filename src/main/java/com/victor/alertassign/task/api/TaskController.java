@@ -6,6 +6,7 @@ import com.victor.alertassign.task.InsertUserTaskUseCase;
 import lombok.RequiredArgsConstructor;
 import org.quartz.SchedulerException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import java.util.UUID;
 import static com.victor.alertassign.task.InsertUserTaskUseCase.*;
 
 @RestController
+@CrossOrigin("*")
 @RequiredArgsConstructor
 @RequestMapping("/task")
 public class TaskController {
