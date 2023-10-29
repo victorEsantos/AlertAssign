@@ -1,6 +1,7 @@
 package com.victor.alertassign.users.domain;
 
 import com.victor.alertassign.task.domain.Task;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -24,7 +25,7 @@ public class Users {
     private String name;
     private String email;
 
-    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<>();
 
     public Users(UUID id, String name, String email) {

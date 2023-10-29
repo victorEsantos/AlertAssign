@@ -2,6 +2,7 @@ package com.victor.alertassign.task.domain;
 
 import com.victor.alertassign.task.domain.enums.Frequency;
 import com.victor.alertassign.users.domain.Users;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -39,7 +40,7 @@ public class Task {
 
     private UUID jobRotationId;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "task_users",
             joinColumns = @JoinColumn(name = "task_id"),

@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,9 +34,9 @@ public class UsersController {
         return createUserUseCase.handle(command);
     }
 
-    @DeleteMapping
-    public ResponseEntity<String> delete(@RequestBody DeleteUsersUseCase.DeleteUsersCommand command) {
-        return deleteUsersUseCase.handle(command);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable UUID id) {
+        return deleteUsersUseCase.handle(new DeleteUsersUseCase.DeleteUsersCommand(id));
     }
 
     @GetMapping
