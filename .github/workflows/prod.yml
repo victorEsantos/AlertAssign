@@ -28,12 +28,17 @@ jobs:
               run: docker push vicjll/alert_assign
 
     deploy:
-        needs: build
-        runs-on: self-hosted
-        steps:
-            - name: Pull img form docker hub
-              run: docker pull vicjll/alert_assign:latest
-            - name: Remove docker cotainer
-              run: docker rm -f alert_assign_container
-            - name: Run docker container
-              run: docker run -d -p 8080:8080 -e DATABASE_USERNAME=${secrets.DATABASE_USERNAME} -e DATABASE_PASSWORD=${secrets.DATABASE_PASSWORD} -e DATABASE_URL=${secrets.DATABASE_URL} --name alert_assign_container vicjll/alert_assign
+      needs: build
+      runs-on: self-hosted
+      steps:
+        - name: Pull img from Docker Hub
+          run: docker pull vicjll/alert_assign:latest
+        - name: Remove Docker container
+          run: docker rm -f alert_assign_container
+        - name: Run Docker container
+          run: |
+            docker run -d -p 8080:8080 \
+                -e DATABASE_USERNAME="${{ secrets.DATABASE_USERNAME }}" \
+                -e DATABASE_PASSWORD="${{ secrets.DATABASE_PASSWORD }}" \
+                -e DATABASE_URL="${{ secrets.DATABASE_URL }}" \
+                --name alert_assign_container vicjll/alert_assign
