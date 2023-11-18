@@ -37,8 +37,10 @@ jobs:
       steps:
         - name: Pull img from Docker Hub
           run: docker pull vicjll/alert_assign:latest
+
         - name: Remove Docker container
           run: docker rm -f alert_assign_container
+
         - name: Run Docker container
           run: |
             docker run -d -p 8080:8080 \
