@@ -36,6 +36,9 @@ jobs:
       runs-on: self-hosted
       steps:
 
+        - name: Strop all containers by key
+          run: docker stop $(docker ps -q)
+
         - name: Remove all containers by key
           run: docker rm $(docker ps -a -q)
 
