@@ -35,11 +35,15 @@ jobs:
       needs: build
       runs-on: self-hosted
       steps:
+
+        - name: Remove all images by key
+          run: docker rmi $(docker images -q)
+
+        - name: Remove all containers by key
+          run: docker rm $(docker ps -a -q)
+
         - name: Pull img from Docker Hub
           run: docker pull vicjll/alert_assign:latest
-
-        - name: Remove Docker container
-          run: docker rm -f alert_assign_container
 
         - name: Run Docker container
           run: |
