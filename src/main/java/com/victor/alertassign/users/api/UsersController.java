@@ -43,4 +43,5 @@ public class UsersController {
     public ResponseEntity<List<UserDto>> getAll() {
         return ResponseEntity.ok(getAllUserUseCase.handle());
     }
+
 }
