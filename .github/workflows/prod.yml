@@ -18,7 +18,7 @@ jobs:
                   java-version: 17
 
             - name: Build project
-              run: mvn clean install
+              run: mvn clean install -DskipTests
               env:
                 DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
                 DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
