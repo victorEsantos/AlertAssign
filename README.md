@@ -10,15 +10,18 @@ Ao criar uma tarefa, o usuário pode definir um intervalo de lembrete, escolhend
 # Links para acessar Aplicação produtiva
 
 ## Cliente
-[[AngularApp]([Stack.md](https://alertassignapp.s3.sa-east-1.amazonaws.com/))](https://alertassignapp.s3.sa-east-1.amazonaws.com/)
+http://alertassignapp.s3-website-sa-east-1.amazonaws.com/users/list
 
 Link do repositório do front: https://github.com/victorEsantos/alert-assign-app
 Este repositorio não é um monoRep, portanto são projetos diferentes para front e back
 
 ## Servidor (swagger com documentação viva)
-[Backend java](http://3.88.29.212:8080/swagger-ui/index.html)
+http://3.88.29.212:8080/swagger-ui/index.html
 
 ps.: Como não foi configurado domínio nem ip estatico, as urls podem mudar ao reiniciar as aws instances, mas vou sempre deixar atualizado aqui.
+
+⚠️Importante⚠️ utilizar os links como http, pois o certificado https não foi configurado
+
 # Índice
 1. [Stack](Stack.md)
 2. [Diagramas](DIAGRAMAS.md)
