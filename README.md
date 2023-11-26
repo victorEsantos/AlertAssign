@@ -25,5 +25,6 @@ ps.: Como não foi configurado domínio nem ip estatico, as urls podem mudar ao 
 # Índice
 1. [Stack](Stack.md)
 2. [Diagramas](DIAGRAMAS.md)
-3. [ADRs](ADR000.md)
-3. [Arquitetura](ARQUITETURA.md)
+3. [ADRs](ADR.md)
+4. [Arquitetura](ARQUITETURA.md)
+5. [Board TRELLO](https://trello.com/invite/b/4gDlJt3i/ATTIbb9c3af3cd150407fbcb1fd0f6f06fb29687CC0F/portifolio-victor-2023)
