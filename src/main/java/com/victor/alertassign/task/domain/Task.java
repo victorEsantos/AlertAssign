@@ -40,7 +40,7 @@ public class Task {
 
     private UUID jobRotationId;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
             name = "task_users",
             joinColumns = @JoinColumn(name = "task_id"),
