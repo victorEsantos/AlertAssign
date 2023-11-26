@@ -60,7 +60,8 @@ jobs:
         - name: Run Docker container
           run: |
             docker run -d -p 8080:8080 \
-                -e DATABASE_USERNAME="${{ secrets.DATABASE_USERNAME }}" \
-                -e DATABASE_PASSWORD="${{ secrets.DATABASE_PASSWORD }}" \
-                -e DATABASE_URL="${{ secrets.DATABASE_URL }}" \
-                --name alert_assign_container vicjll/alert_assign
+            -e DATABASE_USERNAME="${{ secrets.DATABASE_USERNAME }}" \
+            -e DATABASE_PASSWORD="${{ secrets.DATABASE_PASSWORD }}" \
+            -e DATABASE_URL="${{ secrets.DATABASE_URL }}" \
+            --name alert_assign_container vicjll/alert_assign \
+            java -javaagent:/full/path/to/newrelic.jar -jar app.jar
