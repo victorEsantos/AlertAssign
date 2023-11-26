@@ -12,6 +12,9 @@ Ao criar uma tarefa, o usuário pode definir um intervalo de lembrete, escolhend
 ## Cliente
 [[AngularApp]([Stack.md](https://alertassignapp.s3.sa-east-1.amazonaws.com/))](https://alertassignapp.s3.sa-east-1.amazonaws.com/)
 
+Link do repositório do front: https://github.com/victorEsantos/alert-assign-app
+Este repositorio não é um monoRep, portanto são projetos diferentes para front e back
+
 ## Servidor (swagger com documentação viva)
 [Backend java](http://3.88.29.212:8080/swagger-ui/index.html)
 
