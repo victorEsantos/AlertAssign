@@ -7,7 +7,15 @@ Consiste em desenvolver um Sistema de Gestão de Tarefas altamente funcional, pr
 ### Como funciona?
 Ao criar uma tarefa, o usuário pode definir um intervalo de lembrete, escolhendo entre opções diárias, semanais ou mensais. Além disso, se a tarefa for compartilhada entre várias pessoas, o sistema permite a criação de uma lista de responsáveis. O aspecto único é a capacidade de alternar automaticamente a pessoa responsável pela tarefa com base na ordem alfabética, garantindo equidade na distribuição das responsabilidades ao longo do tempo. Essa abordagem inteligente, combinada com os lembretes personalizados, assegura que as tarefas sejam lembradas e concluídas de maneira oportuna e organizada.
 
+# Links para acessar Aplicação produtiva
 
+## Cliente
+[[AngularApp]([Stack.md](https://alertassignapp.s3.sa-east-1.amazonaws.com/))](https://alertassignapp.s3.sa-east-1.amazonaws.com/)
+
+## Servidor (swagger com documentação viva)
+[Backend java](http://3.88.29.212:8080/swagger-ui/index.html)
+
+ps.: Como não foi configurado domínio nem ip estatico, as urls podem mudar ao reiniciar as aws instances, mas vou sempre deixar atualizado aqui.
 # Índice
 1. [Stack](Stack.md)
 2. [Diagramas](DIAGRAMAS.md)
