@@ -36,14 +36,23 @@ jobs:
       runs-on: self-hosted
       steps:
 
-#        - name: Strop all containers by key
-#          run: docker stop $(docker ps -q)
+        - name: Stop all containers if any
+          run: |
+            if [ "$(docker ps -q)" ]; then
+              docker stop $(docker ps -q)
+            fi
 
-        - name: Remove all containers by key
-          run: docker rm $(docker ps -a -q)
+        - name: Remove all containers if any
+          run: |
+            if [ "$(docker ps -a -q)" ]; then
+              docker rm $(docker ps -a -q)
+            fi
 
-        - name: Remove all images by key
-          run: docker rmi $(docker images -q)
+        - name: Remove all images if any
+          run: |
+            if [ "$(docker images -q)" ]; then
+              docker rmi $(docker images -q)
+            fi
 
         - name: Pull img from Docker Hub
           run: docker pull vicjll/alert_assign:latest
