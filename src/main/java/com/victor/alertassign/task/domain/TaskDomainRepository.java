@@ -11,6 +11,9 @@ public interface TaskDomainRepository {
 
     Optional<Task> findById(UUID taskId);
 
+    //find By id projected TaskDto
+    GetAllTaskUseCase.TaskDto findById(UUID taskId, Class<GetAllTaskUseCase.TaskDto> type);
+
     List<GetAllTaskUseCase.TaskDto> findAllProjectedBy();
 
     void deleteById(UUID id);

@@ -5,6 +5,7 @@ import com.victor.alertassign.task.CreateTaskUseCase.CreateTaskCommand;
 import com.victor.alertassign.task.GetAllTaskUseCase;
 import com.victor.alertassign.task.InsertUserTaskUseCase;
 import com.victor.alertassign.task.service.DeleteTaskService;
+import com.victor.alertassign.task.service.GetByIdTaskService;
 import lombok.RequiredArgsConstructor;
 import org.quartz.SchedulerException;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +33,7 @@ public class TaskController {
     private final InsertUserTaskUseCase insertUserTaskUseCase;
     private final GetAllTaskUseCase getAllTaskUseCase;
     private final DeleteTaskService deleteTaskService;
+    private final GetByIdTaskService getByIdTaskService;
 
     @PostMapping
     public ResponseEntity<String> create(@RequestBody CreateTaskCommand command) throws SchedulerException {
@@ -43,6 +45,11 @@ public class TaskController {
     @GetMapping
     public List<GetAllTaskUseCase.TaskDto> getAll() {
         return getAllTaskUseCase.handle();
+    }
+
+    @GetMapping("/{id}")
+    public GetAllTaskUseCase.TaskDto getById(@PathVariable UUID id) {
+        return getByIdTaskService.getById(id);
     }
 
     @PostMapping("/insertUser")
