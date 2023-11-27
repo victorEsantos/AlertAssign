@@ -63,4 +63,5 @@ jobs:
             -e DATABASE_USERNAME="${{ secrets.DATABASE_USERNAME }}" \
             -e DATABASE_PASSWORD="${{ secrets.DATABASE_PASSWORD }}" \
             -e DATABASE_URL="${{ secrets.DATABASE_URL }}" \
+            -e MAIL_PASS="${{ secrets.MAIL_PASS }}" \
             --name alert_assign_container vicjll/alert_assign
