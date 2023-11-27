@@ -2,6 +2,7 @@ package com.victor.alertassign.job.service;
 
 import com.victor.alertassign.job.config.AlertJob;
 import com.victor.alertassign.job.config.RotationJob;
+import lombok.extern.slf4j.Slf4j;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.Job;
 import org.quartz.JobBuilder;
@@ -16,6 +17,7 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class DynamicJobService {
 
     private final Scheduler scheduler;
@@ -26,10 +28,12 @@ public class DynamicJobService {
     }
 
     public void registerAlertJob(String jobName, String cronExpression, String taskId) throws SchedulerException {
+        log.info("Registering job {} with cron {}", jobName, cronExpression);
         registerDynamicJob(jobName, cronExpression, AlertJob.class, taskId);
     }
 
     public void registerRotationJob(String jobName, String cronExpression, String taskId) throws SchedulerException {
+        log.info("Registering job {} with cron {}", jobName, cronExpression);
         registerDynamicJob(jobName, cronExpression, RotationJob.class, taskId);
     }
 

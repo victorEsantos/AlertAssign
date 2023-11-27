@@ -1,5 +1,6 @@
 package com.victor.alertassign.job.config;
 
+import com.victor.alertassign.mail.service.EmailService;
 import com.victor.alertassign.task.domain.Task;
 import com.victor.alertassign.task.domain.TaskDomainRepository;
 import com.victor.alertassign.users.domain.Users;
@@ -26,6 +27,7 @@ public class AlertJob implements Job {
 
     private final TaskDomainRepository taskRepository;
     private final UsersDomainRepository userRepository;
+    private final EmailService emailService;
 
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
@@ -53,12 +55,18 @@ public class AlertJob implements Job {
             taskRepository.save(task);
         }
 
-        alertUser(task.getCurrentUserAssignedId());
+        alertUser(task.getCurrentUserAssignedId(), task.getDescription());
 
     }
 
-    private void alertUser(UUID currentUserAssignedId) {
+    private void alertUser(UUID currentUserAssignedId, String taskDescription) {
         Users user = userRepository.findById(currentUserAssignedId).orElseThrow(() -> new RuntimeException("User not found"));
+
+        try {
+            emailService.sendEmail(user.getEmail(), "Alerta de tarefa", "Você tem uma tarefa para ser realizada \n Descrição: " + taskDescription + "\n");
+        }catch (Exception e) {
+            log.error("Erro ao enviar email para o usuário " + e.getMessage());
+        }
 
         log.info("Alertando usuário " + user.getName());
         log.info("Enviando email para " + user.getEmail());

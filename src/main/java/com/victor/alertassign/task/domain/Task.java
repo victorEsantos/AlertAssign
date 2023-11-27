@@ -51,6 +51,8 @@ public class Task {
         if(isEmpty(this.users)) {
             this.users = new ArrayList<>();
             this.users.add(user);
+
+            this.currentUserAssignedId = user.getId();
         }
 
         if (!this.users.contains(user)){

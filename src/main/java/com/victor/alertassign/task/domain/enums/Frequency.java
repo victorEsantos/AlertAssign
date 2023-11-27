@@ -5,7 +5,7 @@ public enum Frequency {
     MINUTELY {
         @Override
         public String getCron() {
-            return "0 * * ? * *";
+            return "0 0/1 * ? * *";
         }
     },
     //5 min in 5 min
