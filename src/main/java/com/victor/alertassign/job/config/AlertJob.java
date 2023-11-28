@@ -43,8 +43,7 @@ public class AlertJob implements Job {
 
         if(isNull(currentUser)) {
             //ordenar usuarios por ordem alfabetica do nome
-            task.getUsers().stream().sorted(Comparator.comparing(Users::getName))
-                    .findFirst()
+            task.getFirstUser()
                     .ifPresent(user -> task.setCurrentUserAssignedId(user.getId()));
 
             if(isNull(task.getCurrentUserAssignedId())) {

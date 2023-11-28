@@ -1,6 +1,7 @@
 package com.victor.alertassign.task.domain;
 
 import com.victor.alertassign.task.domain.enums.Frequency;
+import com.victor.alertassign.task.domain.enums.StatusTask;
 import com.victor.alertassign.users.domain.Users;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -14,7 +15,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.springframework.util.CollectionUtils.isEmpty;
@@ -40,6 +43,8 @@ public class Task {
 
     private UUID jobRotationId;
 
+    private StatusTask status = StatusTask.DRAFT;
+
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinTable(
             name = "task_users",
@@ -62,5 +67,19 @@ public class Task {
 
     public void setCurrentUserAssignedId(UUID id) {
         this.currentUserAssignedId = id;
+    }
+
+    public void activate(UUID jobFrequencyId, UUID jobRotationId) {
+        this.status = StatusTask.ACTIVE;
+        this.jobFrequencyId = jobFrequencyId;
+        this.jobRotationId = jobRotationId;
+
+        this.getFirstUser().ifPresent(user -> this.currentUserAssignedId = user.getId());
+    }
+
+    public Optional<Users> getFirstUser() {
+        List<Users> usrs = this.getUsers();
+        if(isEmpty(usrs)) return Optional.empty();
+        return usrs.stream().min(Comparator.comparing(usr -> usr.getName().toLowerCase()));
     }
 }

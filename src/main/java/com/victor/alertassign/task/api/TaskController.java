@@ -1,5 +1,6 @@
 package com.victor.alertassign.task.api;
 
+import com.victor.alertassign.task.ActivateTaskUseCase;
 import com.victor.alertassign.task.CreateTaskUseCase;
 import com.victor.alertassign.task.CreateTaskUseCase.CreateTaskCommand;
 import com.victor.alertassign.task.GetAllTaskUseCase;
@@ -34,9 +35,10 @@ public class TaskController {
     private final GetAllTaskUseCase getAllTaskUseCase;
     private final DeleteTaskService deleteTaskService;
     private final GetByIdTaskService getByIdTaskService;
+    private final ActivateTaskUseCase activateTaskUseCase;
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody CreateTaskCommand command) throws SchedulerException {
+    public ResponseEntity<String> create(@RequestBody CreateTaskCommand command) {
         UUID id = createTaskUseCase.handle(command);
         var uri = URI.create("/task/" + id);
         return ResponseEntity.created(uri).build();
@@ -61,6 +63,12 @@ public class TaskController {
     @DeleteMapping("/{id}/delete")
     public ResponseEntity<String> delete(@PathVariable UUID id) {
         deleteTaskService.deleteTask(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/{id}/activate")
+    public ResponseEntity<String> activate(@PathVariable UUID id) throws SchedulerException {
+        activateTaskUseCase.handle(id);
         return ResponseEntity.ok().build();
     }
 
