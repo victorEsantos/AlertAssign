@@ -36,22 +36,22 @@ jobs:
       runs-on: self-hosted
       steps:
 
-        - name: Stop all containers if any
+        - name: Stop container named alert_assign_container
           run: |
-            if [ "$(docker ps -q)" ]; then
-              docker stop $(docker ps -q)
+            if [ "$(docker ps -q --filter 'name=alert_assign_container')" ]; then
+              docker stop alert_assign_container
             fi
 
         - name: Remove all containers if any
           run: |
-            if [ "$(docker ps -a -q)" ]; then
-              docker rm $(docker ps -a -q)
+            if [ "$(docker ps -q --filter 'name=alert_assign_container')" ]; then
+              docker rm alert_assign_container
             fi
 
         - name: Remove all images if any
           run: |
-            if [ "$(docker images -q)" ]; then
-              docker rmi $(docker images -q)
+            if [ "$(docker images -q --filter 'reference=vicjll/alert_assign')" ]; then
+              docker rmi vicjll/alert_assign
             fi
 
         - name: Pull img from Docker Hub
