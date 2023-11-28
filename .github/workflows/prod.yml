@@ -44,7 +44,7 @@ jobs:
 
         - name: Remove all containers if any
           run: |
-            if [ "$(docker ps -a --filter 'name=alert_assign_container')" ]; then
+            if [ "$(docker ps a -q --filter 'name=alert_assign_container')" ]; then
               docker rm alert_assign_container
             fi
 
