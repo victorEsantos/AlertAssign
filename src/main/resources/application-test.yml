@@ -22,6 +22,7 @@ spring:
         jdbc.batch_size: 50
         show_sql: false
         format_sql: true
+        default_schema: it
     show-sql: false
 #logging:
 #  level:
