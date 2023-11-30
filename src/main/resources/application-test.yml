@@ -24,9 +24,11 @@ spring:
         format_sql: true
         default_schema: it
     show-sql: false
-#logging:
-#  level:
-#    root: info
+
+#log level error
+logging:
+  level:
+    root: error
 
   mail:
     host: smtp.gmail.com
