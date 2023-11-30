@@ -15,7 +15,7 @@
     <description>AlertAssign</description>
     <properties>
         <java.version>17</java.version>
-        <sonar.projectKey>com.victor:AlertAssign</sonar.projectKey>
+        <sonar.projectKey>victorEsantos_AlertAssignn</sonar.projectKey>
         <sonar.organization>victoresantos</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
