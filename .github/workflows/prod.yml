@@ -33,6 +33,12 @@ jobs:
                 DATABASE_URL: ${{ secrets.DATABASE_URL }}
                 MAIL_PASS: ${{ secrets.MAIL_PASS }}
 
+            - name: SonarCloud Scan
+              uses: SonarSource/sonarcloud-github-action@master
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                SONAR_TOKEN: ${{ secrets. SONAR }}
+
             - name: Login DockerHub
               run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
             - name: Build Docker image
