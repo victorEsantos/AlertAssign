@@ -27,3 +27,17 @@ spring:
 #logging:
 #  level:
 #    root: info
+
+  mail:
+    host: smtp.gmail.com
+    port: 465
+    username: victor01.santos@catolicasc.org.br
+    password: ${MAIL_PASS}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            enable: true
