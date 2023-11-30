@@ -1,13 +1,4 @@
 spring:
-  #quartz config
-#  quartz:
-#    job-details:
-#      myJob:
-#        durability: true
-#        job-class: com.victor.alertAssign.job.AlertAssignJob
-#      triggers:
-#        myTrigger:
-#          cron: 0 0 7 ? * MON
   datasource:
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME}
@@ -25,7 +16,6 @@ spring:
         default_schema: it
     show-sql: false
 
-#log level error
 logging:
   level:
     root: error

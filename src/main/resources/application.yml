@@ -1,13 +1,4 @@
 spring:
-  #quartz config
-#  quartz:
-#    job-details:
-#      myJob:
-#        durability: true
-#        job-class: com.victor.alertAssign.job.AlertAssignJob
-#      triggers:
-#        myTrigger:
-#          cron: 0 0 7 ? * MON
   datasource:
     url: ${DATABASE_URL}
     username: ${DATABASE_USERNAME}
@@ -23,9 +14,6 @@ spring:
         show_sql: false
         format_sql: true
     show-sql: false
-#logging:
-#  level:
-#    root: info
 
   mail:
     host: smtp.gmail.com
